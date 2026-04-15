@@ -1,118 +1,123 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'My Site',
-  url: 'https://example.com',
-  description: 'We provide top-notch services and solutions',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'Customer Service',
-    availableLanguage: ['en']
-  }
+  '@type': 'WebSite',
+  name: 'Starter Site',
+  description: 'Starter placeholder landing page for a small business or creative service.'
 };
 ---
 
 <BaseLayout
-  title="Landing Page - Premium Services & Solutions"
-  description="Our landing page offers top-notch services and solutions for your business needs."
-  ogTitle="Welcome to Our Site"
-  ogDescription="Discover amazing things with us. We provide top-notch services and solutions."
+  title="Starter Site Placeholder"
+  description="A clean placeholder landing page to review and iterate."
+  ogTitle="Starter Site Placeholder"
+  ogDescription="A clean placeholder landing page to review and iterate."
   jsonLd={jsonLd}
 >
-  <Header current="home" />
-  <section class="hero" role="region" aria-labelledby="heroHeading">
-    <div class="hero-wrapper">
-      <div class="hero-content">
-        <div class="hero-tag">Welcome to Excellence</div>
-        <h1 id="heroHeading">Exceptional Services Built for Your Success</h1>
-        <p class="hero-subtitle">Discover amazing things with us. We provide top-notch services and solutions that transform businesses and exceed expectations.</p>
-        <div class="hero-buttons">
-          <a href="#features" class="btn btn-primary btn-large">Explore Features</a>
-          <a href="#contact" class="btn btn-secondary btn-large">Get in Touch</a>
+  <main>
+    <section id="home" class="hero" role="region" aria-labelledby="heroHeading">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="logo-placeholder" aria-label="Logo placeholder">Logo</div>
+          <h1 id="heroHeading">Launch your next website with less friction.</h1>
+          <p class="muted">This starter page is a clean baseline for a small business or creative service. It is built to iterate quickly on content, style, and structure.</p>
+          <div class="cta-row">
+            <a href="#contact" class="btn btn-primary">Get in touch</a>
+            <a href="#about" class="btn btn-outline">Learn more</a>
+          </div>
+        </div>
+        <div class="media-placeholder" role="img" aria-label="Image or video placeholder">Image/Video Placeholder</div>
+      </div>
+    </section>
+
+    <section id="about" class="section" role="region" aria-labelledby="aboutHeading">
+      <div class="container narrow">
+        <h2 id="aboutHeading">About</h2>
+        <p class="muted">We help busy teams launch faster with simple websites and clear messaging.</p>
+      </div>
+    </section>
+
+    <section id="services" class="section" role="region" aria-labelledby="servicesHeading">
+      <div class="container">
+        <h2 id="servicesHeading">Services</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Fast Setup</h3>
+            <p class="muted">Get a clear, editable structure in place quickly so decisions happen faster.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Clear Messaging</h3>
+            <p class="muted">Use straightforward copy blocks that are easy to revise as goals become sharper.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Flexible Foundation</h3>
+            <p class="muted">Keep design and content modular so pages, colors, and sections can evolve easily.</p>
+          </article>
         </div>
       </div>
-      <div class="hero-image-placeholder">
-        <img src="https://placehold.co/500x500/667eea/ffffff?text=Our+Services" alt="Professional services showcase" loading="lazy" />
+    </section>
+
+    <section id="testimonials" class="section" role="region" aria-labelledby="testimonialsHeading">
+      <div class="container">
+        <h2 id="testimonialsHeading">Testimonials</h2>
+        <div class="testimonial-grid">
+          <blockquote>
+            “Smooth process and faster turnaround than expected.”
+            <cite>— Client A</cite>
+          </blockquote>
+          <blockquote>
+            “The structure made updates simple and stress-free.”
+            <cite>— Client B</cite>
+          </blockquote>
+        </div>
       </div>
+    </section>
+
+    <section id="contact" class="section" role="region" aria-labelledby="contactHeading">
+      <div class="container narrow">
+        <h2 id="contactHeading">Contact</h2>
+        <form id="contactForm" method="post" action="/__forms/contact" novalidate>
+          <div class="form-group">
+            <label for="name">Name <span aria-label="required">*</span></label>
+            <input type="text" id="name" name="name" required aria-required="true" aria-describedby="nameError" />
+            <span id="nameError" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span aria-label="required">*</span></label>
+            <input type="email" id="email" name="email" required aria-required="true" aria-describedby="emailError" />
+            <span id="emailError" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" aria-describedby="phoneError" />
+            <span id="phoneError" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="message">Message <span aria-label="required">*</span></label>
+            <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="messageError"></textarea>
+            <span id="messageError" class="error-message"></span>
+          </div>
+
+          <input type="hidden" name="_to" value="sonnywebsites@gmail.com" />
+          <input type="hidden" name="store_in_dashboard" value="true" />
+          <input type="text" name="_hp" style="display:none" autocomplete="off" tabindex="-1" />
+
+          <button type="submit" id="submitBtn" class="submit-btn" aria-busy="false">Submit</button>
+        </form>
+        <div id="responseMessage" role="alert" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="#" aria-label="Privacy policy placeholder">Privacy</a>
+        <a href="#" aria-label="Terms placeholder">Terms</a>
+      </div>
+      <p class="copyright">&copy; <span id="year">2026</span> Starter Site Placeholder</p>
     </div>
-  </section>
-  <section id="features" class="features" role="region" aria-labelledby="featuresHeading">
-    <h2 id="featuresHeading">Our Key Features</h2>
-    <div class="features-grid">
-      <article class="feature-card">
-        <div class="feature-icon">🚀</div>
-        <h3>Fast Performance</h3>
-        <p>Lightning-fast delivery of our services with optimized solutions tailored to your needs.</p>
-        <a href="#contact" class="btn btn-small">Learn More</a>
-      </article>
-      <article class="feature-card">
-        <div class="feature-icon">💎</div>
-        <h3>Premium Quality</h3>
-        <p>We guarantee the highest quality standards in every product and service we deliver.</p>
-        <a href="#contact" class="btn btn-small">Learn More</a>
-      </article>
-      <article class="feature-card">
-        <div class="feature-icon">🛡️</div>
-        <h3>Secure & Reliable</h3>
-        <p>Your data and trust are our priority with enterprise-grade security protocols.</p>
-        <a href="#contact" class="btn btn-small">Learn More</a>
-      </article>
-      <article class="feature-card">
-        <div class="feature-icon">🤝</div>
-        <h3>Expert Support</h3>
-        <p>Dedicated support team available 24/7 to assist with any questions or concerns.</p>
-        <a href="#contact" class="btn btn-small">Learn More</a>
-      </article>
-    </div>
-  </section>
-  <section id="testimonials" class="testimonials" role="region" aria-labelledby="testimonialsHeading">
-    <h2 id="testimonialsHeading">What Our Customers Say</h2>
-    <div class="testimonials-grid">
-      <article class="testimonial-card">
-        <div class="testimonial-rating">★★★★★</div>
-        <p class="testimonial-text">"This service has transformed our business operations. Highly recommended!"</p>
-        <p class="testimonial-author">- Sarah Johnson, CEO</p>
-      </article>
-      <article class="testimonial-card">
-        <div class="testimonial-rating">★★★★★</div>
-        <p class="testimonial-text">"Exceptional quality and support. Best decision we've made for our company."</p>
-        <p class="testimonial-author">- Michael Chen, Director</p>
-      </article>
-      <article class="testimonial-card">
-        <div class="testimonial-rating">★★★★★</div>
-        <p class="testimonial-text">"Professional team with outstanding results. Worth every penny!"</p>
-        <p class="testimonial-author">- Emily Rodriguez, Manager</p>
-      </article>
-    </div>
-  </section>
-  <section id="contact" class="contact" role="region" aria-labelledby="contactHeading">
-    <h2 id="contactHeading">Contact Us</h2>
-    <p class="contact-description">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-    <form id="contactForm" method="post" action="/__forms/contact" novalidate>
-      <div class="form-group">
-        <label for="name">Name <span aria-label="required">*</span></label>
-        <input type="text" id="name" name="name" required aria-required="true" aria-describedby="nameError" />
-        <span id="nameError" class="error-message"></span>
-      </div>
-      <div class="form-group">
-        <label for="email">Email <span aria-label="required">*</span></label>
-        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="emailError" />
-        <span id="emailError" class="error-message"></span>
-      </div>
-      <div class="form-group">
-        <label for="message">Message <span aria-label="required">*</span></label>
-        <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="messageError"></textarea>
-        <span id="messageError" class="error-message"></span>
-      </div>
-      <input type="text" name="_hp" style="display:none" autocomplete="off" tabindex="-1" />
-      <button type="submit" id="submitBtn" class="btn btn-primary" aria-busy="false">Send Message</button>
-    </form>
-    <div id="responseMessage" role="alert"></div>
-  </section>
-  <Footer />
+  </footer>
 </BaseLayout>

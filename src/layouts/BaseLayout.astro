@@ -17,7 +17,7 @@ const sitemapHref = Astro.site
       Astro.site.href.endsWith('/') ? Astro.site.href : `${Astro.site.href}/`
     ).href
   : undefined;
-const siteTitle = title.includes(' - ') ? title : `${title} - My Site`;
+const siteTitle = title.includes(' - ') ? title : `${title} - Starter Site`;
 const metaDescription = description ?? 'Our landing page offers top-notch services and solutions for your business needs.';
 const metaOgTitle = ogTitle ?? title;
 const metaOgDescription = ogDescription ?? metaDescription;
